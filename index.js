@@ -17,17 +17,17 @@ class RedisCache {
       options.cacheKey : (path) => path;
 
     client.on('error', error => {
-      this.ui.writeLine(`redis error; err=${error}`);
+      console.error(`redis error; err=${error}`);
     });
 
     this.client.on('connect', () => {
       this.connected = true;
-      this.ui.writeLine('redis connected');
+      console.log('redis connected');
     });
 
     this.client.on('end', () => {
       this.connected = false;
-      this.ui.writeLine('redis disconnected');
+      console.log('redis disconnected');
     });
   }
 
